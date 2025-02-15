@@ -121,7 +121,7 @@ public class TaskList {
     public void markTaskAsCompleted(int index) {
         Task task = getTaskAtIndex(index);
         if (task != null) {
-//            task.markAsCompleted();
+            task.markAsCompleted();
             System.out.println("Task marked as completed: " + task);
         }
     }
