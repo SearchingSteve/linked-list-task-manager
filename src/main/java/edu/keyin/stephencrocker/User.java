@@ -1,24 +1,43 @@
 package edu.keyin.stephencrocker;
 
 public class User {
+    private String name;
+    private TaskList taskList;
+
+    public User(String name, TaskList taskList) {
+        this.name = name;
+        this.taskList = new TaskList();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public TaskList getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(TaskList taskList) {
+        this.taskList = taskList;
+        // Use as method is main menu to copy users task list
+    }
 
 
-    // Create users & Store in array
-    // Each user has unique name
-
-    // 1) Store name of user and their to do list (SLL)
-    // 2) Include methods addTask, markTaskComplete, and printAllTasks;
-
-
-    private void addTask(){
+    private void addTask(Task task){
 
     }
 
-    private void markTaskComplete(){
-
+    private void markTaskComplete(int index){
+        taskList.markTaskAsCompleted(index);
     }
 
-    private void printAllTasks(){
+    private void printTasks(){
+        System.out.println(name + "'s" + "tasks: ");
+        taskList.printTasks();
 
     }
 }

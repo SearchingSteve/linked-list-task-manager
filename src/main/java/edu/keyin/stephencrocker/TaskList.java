@@ -127,7 +127,7 @@ public class TaskList {
     }
 
     // Print all tasks in the list
-    public void printTaskList() {
+    public void printTasks() {
         if (head == null) {
             System.out.println("No tasks to display.");
             return;
