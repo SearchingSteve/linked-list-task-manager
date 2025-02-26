@@ -7,7 +7,7 @@ This application uses a custom-built singly linked list (SLL) data structure to 
 ## Features
 
 - **User Management**: Create and view users in the system
-- **Task Management**: Add tasks, mark tasks as completed
+- **Task Management**: Add, delete, and mark tasks as completed
 - **Task Viewing**: View tasks for a specific user or all users
 
 ## System Requirements
@@ -34,42 +34,41 @@ This application uses a custom-built singly linked list (SLL) data structure to 
    java edu.keyin.stephencrocker.Main
    ```
 
+
 ## Usage
-
 The application presents a menu-driven interface with the following options:
-
 1. **Create User**: Add a new user to the system
    - Prompts for a username
    - Checks if the username already exists
    - Enforces the maximum user limit 
    - Confirms when a user is successfully created
-
 2. **Add Task**: Create a new task for a specific user
    - Prompts for username selection
    - Requests task description
    - Adds the task to the selected user's task list
-
-3. **Mark Task as Completed**: Update a task's status
+3. **Delete Task**: Remove a task from a user's list
    - Prompts for username selection
-   - Displays the user's task list
+   - Checks if the user has any tasks to delete
+   - Requests the task number to delete
+   - Removes the specified task from the linked list
+4. **Mark Task as Completed**: Update a task's status
+   - Prompts for username selection
+   - Checks if the user has any tasks to mark
    - Requests the task number to mark as completed
    - Updates the task status in the system
-
-4. **View a User's Tasks**: Display all tasks for a selected user
+5. **View a User's Tasks**: Display all tasks for a selected user
    - Prompts for username selection
    - Displays all tasks for that user with their completion status
-
-5. **View All Users' Tasks**: Display tasks for all users in the system
+6. **View All Users' Tasks**: Display tasks for all users in the system
    - Shows a list of all tasks by all users organized by user
    - Includes completion status for each task
-
-6. **View Users**: List all users in the system
+7. **View Users**: List all users in the system
    - Displays all registered usernames
    - Indicates if no users have been created yet
-
-7. **Exit**: Close the application
+8. **Exit**: Close the application
    - Properly closes the scanner
    - Terminates the program
+
 
 
 ## Project Structure
@@ -78,7 +77,7 @@ The application is organized into several key classes:
 - `Main`: Contains the application logic and user interface
 - `User`: Represents a user in the system
 - `Task`: Represents an individual task
-- `TaskList`: Manages collections of tasks
+- `TaskList`: Manages collections of tasks (SLL)
 
 ## Contributing
 
