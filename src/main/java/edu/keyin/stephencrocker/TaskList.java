@@ -2,8 +2,8 @@ package edu.keyin.stephencrocker;
 
 // Represents the to-do list for a user.
 // Includes methods to add a task, delete tasks, mark a task as completed, and print all tasks.
-
 public class TaskList {
+
     private class Node {
         Task task;
         Node next;
@@ -20,11 +20,20 @@ public class TaskList {
         this.head = null;
     }
 
+    /**
+     * Checks if the task list is empty.
+     * 
+     * @return true if the task list is empty, false otherwise.
+     */
     public boolean isEmpty() {
         return head == null;
     }
 
-    // Add a task to the end of the list
+    /**
+     * Adds a new task to the end of the list.
+     * 
+     * @param task the task to be added.
+     */
     public void addTask(Task task) {
         Node newNode = new Node(task);
         if (isEmpty()) {
@@ -39,7 +48,10 @@ public class TaskList {
         System.out.println("Task added: " + task);
     }
 
-    // Delete the first task (head) of the list
+    /**
+     * Deletes the first task (head) of the list.
+     * If the list is empty, it will notify the user.
+     */
     public void deleteFirstTaskAdded() {
         if (head == null) {
             System.out.println("List is empty. Nothing to delete.");
@@ -49,7 +61,11 @@ public class TaskList {
         System.out.println("First task deleted.");
     }
 
-    // Delete the last task (tail) in the list
+    /**
+     * Deletes the last task (tail) in the list.
+     * If the list is empty, it will notify the user.
+     * If there is only one task, it deletes that task.
+     */
     public void deleteLastTaskAdded() {
         if (head == null) {
             System.out.println("List is empty. Nothing to delete.");
@@ -70,7 +86,12 @@ public class TaskList {
         System.out.println("Last task deleted.");
     }
 
-    // Delete a task at the specified index
+    /**
+     * Deletes a task at the specified index.
+     * If the index is invalid or out of bounds, it will notify the user.
+     * 
+     * @param index the index of the task to delete.
+     */
     public void deleteTaskAtIndex(int index) {
         if (head == null) {
             System.out.println("List is empty. Nothing to delete.");
@@ -90,7 +111,7 @@ public class TaskList {
                 }
                 if (curr != null && curr.next != null) {
                     curr.next = curr.next.next;
-                    System.out.println("Task " + index + 1 + " deleted.");
+                    System.out.println("Task " + (index + 1) + " deleted.");
                 } else {
                     System.out.println("Index out of bounds. Nothing to delete.");
                 }
@@ -98,7 +119,13 @@ public class TaskList {
         }
     }
 
-    // Get the task at the specified index
+    /**
+     * Gets the task at the specified index.
+     * 
+     * @param index the index of the task to retrieve.
+     * @return the task at the specified index, or null if the index is out of
+     *         bounds.
+     */
     public Task getTaskAtIndex(int index) {
         if (head == null) {
             System.out.println("List is empty. Nothing to show.");
@@ -121,7 +148,11 @@ public class TaskList {
         }
     }
 
-    // Mark a task as completed by index
+    /**
+     * Marks a task as completed by the specified index.
+     * 
+     * @param index the index of the task to mark as completed.
+     */
     public void markTaskAsCompleted(int index) {
         Task task = getTaskAtIndex(index);
         if (task != null) {
@@ -130,7 +161,10 @@ public class TaskList {
         }
     }
 
-    // Print all tasks in the list
+    /**
+     * Prints all tasks in the list, displaying the task number and description.
+     * If the list is empty, it will notify the user.
+     */
     public void printTasks() {
         if (head == null) {
             System.out.println("No tasks to display.");
