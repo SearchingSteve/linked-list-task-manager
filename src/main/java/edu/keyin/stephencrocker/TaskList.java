@@ -20,10 +20,14 @@ public class TaskList {
         this.head = null;
     }
 
+    public boolean isEmpty() {
+        return head == null;
+    }
+
     // Add a task to the end of the list
     public void addTask(Task task) {
         Node newNode = new Node(task);
-        if (head == null) {
+        if (isEmpty()) {
             head = newNode;
         } else {
             Node curr = head;
@@ -45,7 +49,7 @@ public class TaskList {
         System.out.println("First task deleted.");
     }
 
-    // Delete the last task in the list
+    // Delete the last task (tail) in the list
     public void deleteLastTaskAdded() {
         if (head == null) {
             System.out.println("List is empty. Nothing to delete.");
@@ -86,7 +90,7 @@ public class TaskList {
                 }
                 if (curr != null && curr.next != null) {
                     curr.next = curr.next.next;
-                    System.out.println("Task deleted at index " + index);
+                    System.out.println("Task " + index + 1 + " deleted.");
                 } else {
                     System.out.println("Index out of bounds. Nothing to delete.");
                 }

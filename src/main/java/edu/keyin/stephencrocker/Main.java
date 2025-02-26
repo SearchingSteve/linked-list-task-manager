@@ -16,11 +16,12 @@ public class Main {
             switch (choice) {
                 case 1 -> createUser();
                 case 2 -> addTask();
-                case 3 -> markTaskCompleted();
-                case 4 -> viewUserTasks();
-                case 5 -> viewAllUsersTasks();
-                case 6 -> viewUsers();
-                case 7 -> exitProgram();
+                case 3 -> deleteTask();
+                case 4 -> markTaskCompleted();
+                case 5 -> viewUserTasks();
+                case 6 -> viewAllUsersTasks();
+                case 7 -> viewUsers();
+                case 8 -> exitProgram();
                 default -> System.out.println("Invalid option, please try again.");
             }
         }
@@ -29,11 +30,12 @@ public class Main {
     private static void displayMenu() {
         System.out.println("\n1. Create User");
         System.out.println("2. Add Task");
-        System.out.println("3. Mark Task as Completed");
-        System.out.println("4. View a Users Tasks");
-        System.out.println("5. View All Users Tasks");
-        System.out.println("6. View Users");
-        System.out.println("7. Exit");
+        System.out.println("3. Delete Task");
+        System.out.println("4. Mark Task as Completed");
+        System.out.println("5. View a Users Tasks");
+        System.out.println("6. View All Users Tasks");
+        System.out.println("7. View Users");
+        System.out.println("8. Exit");
         System.out.print("Choose an option: ");
     }
 
@@ -74,11 +76,36 @@ public class Main {
         user.getTaskList().addTask(new Task(taskDescription));
     }
 
+    private static void deleteTask() {
+        User user = getUser();
+        if (user == null)
+            return;
+        if (user.getTaskList().isEmpty()) {
+            System.out.println("This user has no tasks to delete.");
+            return;
+        }
+        System.out.print("Enter task number to delete: ");
+        if (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter a valid number.");
+            scanner.next();
+            return;
+        }
+        int taskNumber = scanner.nextInt();
+        scanner.nextLine();
+        user.getTaskList().deleteTaskAtIndex(taskNumber - 1);
+        // user.getTaskList().deleteTaskAtIndex(taskNumber - 1);
+
+    }
+
     private static void markTaskCompleted() {
         User user = getUser();
         if (user == null)
             return;
 
+        if (user.getTaskList().isEmpty()) {
+        System.out.println("This user has no tasks to mark as completed.");
+        return;
+        }
         System.out.print("Enter task number to mark as completed: ");
         if (!scanner.hasNextInt()) {
             System.out.println("Invalid input. Please enter a valid number.");
