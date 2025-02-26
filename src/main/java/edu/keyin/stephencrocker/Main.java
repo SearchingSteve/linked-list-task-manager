@@ -17,8 +17,10 @@ public class Main {
                 case 1 -> createUser();
                 case 2 -> addTask();
                 case 3 -> markTaskCompleted();
-                case 4 -> viewTasks();
-                case 5 -> exitProgram();
+                case 4 -> viewUserTasks();
+                case 5 -> viewAllUsersTasks();
+                case 6 -> viewUsers();
+                case 7 -> exitProgram();
                 default -> System.out.println("Invalid option, please try again.");
             }
         }
@@ -28,8 +30,10 @@ public class Main {
         System.out.println("\n1. Create User");
         System.out.println("2. Add Task");
         System.out.println("3. Mark Task as Completed");
-        System.out.println("4. View Tasks");
-        System.out.println("5. Exit");
+        System.out.println("4. View a Users Tasks");
+        System.out.println("5. View All Users Tasks");
+        System.out.println("6. View Users");
+        System.out.println("7. Exit");
         System.out.print("Choose an option: ");
     }
 
@@ -39,7 +43,7 @@ public class Main {
             scanner.next();
         }
         int choice = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         return choice;
     }
 
@@ -56,13 +60,14 @@ public class Main {
             users[userCount++] = new User(userName);
             System.out.println("User created: " + userName);
         } else {
-            System.out.println("User limit reached.");
+            System.out.println("User limit reached. (Max = " + MAX_USERS + ")");
         }
     }
 
     private static void addTask() {
         User user = getUser();
-        if (user == null) return;
+        if (user == null)
+            return;
 
         System.out.print("Enter task description: ");
         String taskDescription = scanner.nextLine().trim();
@@ -71,7 +76,8 @@ public class Main {
 
     private static void markTaskCompleted() {
         User user = getUser();
-        if (user == null) return;
+        if (user == null)
+            return;
 
         System.out.print("Enter task number to mark as completed: ");
         if (!scanner.hasNextInt()) {
@@ -80,16 +86,38 @@ public class Main {
             return;
         }
         int taskNumber = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
 
         user.getTaskList().markTaskAsCompleted(taskNumber - 1);
     }
 
-    private static void viewTasks() {
+    private static void viewUserTasks() {
         User user = getUser();
-        if (user == null) return;
+        if (user == null)
+            return;
 
         user.printTasks();
+    }
+
+    public static void viewUsers() {
+        if (userCount == 0) {
+            System.out.println("No users in system. Create a user first.");
+            return;
+        }
+        System.out.println("\nUsers in system: ");
+        for (int i = 0; i < userCount; i++) {
+            System.out.println(users[i].getName());
+        }
+    }
+
+    public static void viewAllUsersTasks() {
+        if (userCount == 0) {
+            System.out.println("No users in system. Create a user first.");
+            return;
+        }
+        for (int i = 0; i < userCount; i++) {
+            users[i].printTasks();
+        }
     }
 
     private static User getUser() {
