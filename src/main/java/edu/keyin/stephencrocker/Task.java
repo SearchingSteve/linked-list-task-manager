@@ -4,7 +4,7 @@ public class Task {
     private String description;
     private boolean isCompleted;
 
-    public Task(String description, boolean isCompleted) {
+    public Task(String description) {
         this.description = description;
         this.isCompleted = false;
     }

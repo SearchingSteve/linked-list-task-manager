@@ -134,8 +134,10 @@ public class TaskList {
         }
 
         Node curr = head;
+        int taskCount = 0;
         while (curr != null) {
-            System.out.println(curr.task);
+            taskCount++;
+            System.out.println(taskCount + ". " + curr.task);
             curr = curr.next;
         }
     }
