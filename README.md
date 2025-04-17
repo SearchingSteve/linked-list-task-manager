@@ -87,11 +87,9 @@ The application is organized into several key classes:
 4. Push to the branch: `git push origin new-feature`
 5. Submit a pull request
 
-### License
+## License
+This project is provided for personal use only. Redistribution, modification, or commercial use in any form is strictly prohibited without prior written permission from the author.
+For detailed license terms, refer to the [LICENSE](./LICENSE.md) file.
 
-This project is licensed for educational purposes only. Redistribution, modification, or commercial use requires prior written permission.
-
-### Author
-
-- **Stephen Crocker**
-- GitHub: [SearchingSteve](https://github.com/SearchingSteve)
+## Author
+[SearchingSteve](https://github.com/SearchingSteve)
