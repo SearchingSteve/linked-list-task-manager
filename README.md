@@ -19,19 +19,15 @@ This application uses a custom-built singly linked list (SLL) data structure to 
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/task-manager.git
+   git clone https://github.com/SearchingSteve/linked-list-task-manager.git
    ```
-2. Navigate to the project directory:
+2. Compile the Java files:
    ```
-   cd task-manager
+   javac -d target/classes src/main/java/edu/keyin/stephencrocker/*.java
    ```
-3. Compile the Java files:
+3. Run the application:
    ```
-   javac edu/keyin/stephencrocker/*.java
-   ```
-4. Run the application:
-   ```
-   java edu.keyin.stephencrocker.Main
+   java -cp target/classes edu.keyin.stephencrocker.Main
    ```
 
 
